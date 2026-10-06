@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1F2E1B">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Groveworld Realties — Client Portal</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="img/icon-180.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="app">
+
+  <header class="topbar">
+    <div class="brand">
+      <img class="brand-mark" src="img/icon-180.png" alt="Groveworld">
+      <div class="brand-text">
+        <span class="brand-name">GROVEWORLD</span>
+        <span class="brand-sub">REALTIES LIMITED</span>
+      </div>
+    </div>
+    <span class="demo-badge">DEMO</span>
+  </header>
+
+  <main class="screens">
+
+    <!-- HOME -->
+    <section id="screen-home" class="screen active">
+      <div class="greeting">
+        <p class="greet-sub" id="greet-time">Good morning</p>
+        <h1>Find your place<br>in Lekki.</h1>
+      </div>
+      <div class="quick-actions">
+        <button class="qa" data-go="properties"><span class="qa-ico">🏘️</span><span>Browse<br>Estates</span></button>
+        <button class="qa" data-go="inspect"><span class="qa-ico">📅</span><span>Book<br>Inspection</span></button>
+        <button class="qa" data-go="payments"><span class="qa-ico">💳</span><span>My<br>Payments</span></button>
+        <button class="qa" data-go="contact"><span class="qa-ico">💬</span><span>Talk<br>to Us</span></button>
+      </div>
+      <div class="sec-head"><h2>Featured estates</h2><button class="link" data-go="properties">View all</button></div>
+      <div class="hscroll" id="featured-row"></div>
+      <div class="trust-row">
+        <div class="trust"><strong>12+</strong><span>estates delivered</span></div>
+        <div class="trust"><strong>2012</strong><span>building since</span></div>
+        <div class="trust"><strong>24<small>mo</small></strong><span>flexible plans</span></div>
+      </div>
+      <div class="pitch-card">
+        <h3>Own with instalments</h3>
+        <p>Spread payment over 6–24 months. See exactly what you'd pay each month — no surprises.</p>
+        <button class="btn-gold" data-go="properties">Try the plan calculator</button>
+      </div>
+    </section>
+
+    <!-- PROPERTIES -->
+    <section id="screen-properties" class="screen">
+      <h1 class="page-title">Estates</h1>
+      <p class="page-sub">Lekki Phase 1 corridor · Lagos</p>
+      <div id="estate-list" class="estate-list"></div>
+    </section>
+
+    <!-- ESTATE DETAIL (sub-screen) -->
+    <section id="screen-estate" class="screen">
+      <button class="back" data-go="properties">‹ Estates</button>
+      <div id="estate-detail"></div>
+    </section>
+
+    <!-- MY PAYMENTS -->
+    <section id="screen-payments" class="screen">
+      <h1 class="page-title">My Payments</h1>
+      <p class="page-sub">Sample client account · <span class="sample-tag">SAMPLE DATA</span></p>
+      <div class="pay-card">
+        <div class="pay-top">
+          <div><span class="lbl">Property</span><strong id="pay-prop">—</strong></div>
+          <div class="pay-pct" id="pay-pct">0%</div>
+        </div>
+        <div class="progress"><div class="progress-fill" id="pay-bar"></div></div>
+        <div class="pay-nums">
+          <div><span class="lbl">Paid</span><strong id="pay-paid" class="green">—</strong></div>
+          <div><span class="lbl">Balance</span><strong id="pay-bal">—</strong></div>
+          <div><span class="lbl">Next due</span><strong id="pay-next">—</strong></div>
+        </div>
+      </div>
+      <div class="sec-head"><h2>Payment schedule</h2></div>
+      <div id="schedule-list" class="sched-list"></div>
+      <div class="sec-head"><h2>Receipts</h2></div>
+      <div id="receipt-list" class="receipt-list"></div>
+    </section>
+
+    <!-- BOOK INSPECTION -->
+    <section id="screen-inspect" class="screen">
+      <h1 class="page-title">Book Inspection</h1>
+      <p class="page-sub">Free guided site visit</p>
+      <div id="insp-flow">
+        <div class="step-lbl">1 · Choose an estate</div>
+        <div id="insp-estates" class="chip-grid"></div>
+        <div class="step-lbl">2 · Pick a day</div>
+        <div id="insp-days" class="chip-grid days"></div>
+        <div class="step-lbl">3 · Pick a time</div>
+        <div id="insp-times" class="chip-grid">
+          <button class="chip" data-t="10:00 AM">10:00 AM</button>
+          <button class="chip" data-t="12:00 PM">12:00 PM</button>
+          <button class="chip" data-t="2:00 PM">2:00 PM</button>
+          <button class="chip" data-t="4:00 PM">4:00 PM</button>
+        </div>
+        <div class="step-lbl">4 · Your details</div>
+        <input id="insp-name" type="text" placeholder="Full name" autocomplete="name">
+        <input id="insp-phone" type="tel" placeholder="Phone / WhatsApp" autocomplete="tel">
+        <button id="insp-submit" class="btn-primary" disabled>Confirm inspection</button>
+      </div>
+      <div id="insp-done" class="done-card hidden">
+        <div class="done-check">✓</div>
+        <h2>Inspection booked</h2>
+        <p id="insp-summary"></p>
+        <p class="ref">Reference: <strong id="insp-ref"></strong></p>
+        <button class="btn-ghost" id="insp-again">Book another</button>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="screen-contact" class="screen">
+      <h1 class="page-title">Contact Us</h1>
+      <p class="page-sub">We'd love to show you around</p>
+      <div class="contact-card">
+        <div class="c-row"><span class="c-ico">📍</span><div><strong>Head Office</strong><br>Mainstreet Bank Plaza, Admiralty Way,<br>Lekki Phase 1, Lagos</div></div>
+        <div class="c-row"><span class="c-ico">✉️</span><div><strong>Email</strong><br><a href="mailto:info@groveworldrealties.com">info@groveworldrealties.com</a></div></div>
+        <div class="c-row"><span class="c-ico">🕘</span><div><strong>Office hours</strong><br>Mon–Sat · 9:00 AM – 5:00 PM</div></div>
+      </div>
+      <div class="sec-head"><h2>Request a callback</h2></div>
+      <div id="cb-form">
+        <input id="cb-name" type="text" placeholder="Full name" autocomplete="name">
+        <input id="cb-phone" type="tel" placeholder="Phone number" autocomplete="tel">
+        <button id="cb-submit" class="btn-primary">Call me back</button>
+      </div>
+      <div id="cb-done" class="done-card hidden">
+        <div class="done-check">✓</div>
+        <h2>Request received</h2>
+        <p>Our team will call you back shortly during office hours.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <nav class="tabbar">
+    <button class="tab active" data-go="home"><span class="t-ico">🏠</span><span>Home</span></button>
+    <button class="tab" data-go="properties"><span class="t-ico">🏘️</span><span>Estates</span></button>
+    <button class="tab" data-go="payments"><span class="t-ico">💳</span><span>Payments</span></button>
+    <button class="tab" data-go="inspect"><span class="t-ico">📅</span><span>Inspect</span></button>
+    <button class="tab" data-go="contact"><span class="t-ico">💬</span><span>Contact</span></button>
+  </nav>
+
+</div>
+
+<!-- receipt modal -->
+<div id="modal" class="modal hidden">
+  <div class="modal-card">
+    <button id="modal-close" class="modal-x">✕</button>
+    <div class="brand-mini">GROVEWORLD REALTIES LIMITED</div>
+    <h2>Payment Receipt</h2>
+    <dl id="modal-body" class="receipt-dl"></dl>
+  </div>
+</div>
+
+<script src="js/app.js"></script>
+</body>
+</html>
